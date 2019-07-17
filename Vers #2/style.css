@@ -4,8 +4,8 @@
 
 /* Metto un Display flex al contenitore della griglia */
 .grid {
-  width: 80vw;
-  height: 80vh;
+  width: 70vw;
+  height: 70vh;
   margin: 0 auto;
 }
 
@@ -26,8 +26,15 @@
 .rowCounter{
   display: flex;
   justify-content: space-around;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 
+}
+
+.colum{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 
@@ -57,21 +64,21 @@
 /* Classi per i contatori */
 #rossi{
   width: 100px;
-  height: 100px;
+  height: 50px;
   border: 2px solid lightgrey;
   border-radius: 5%;
 }
 
 #verdi{
   width: 100px;
-  height: 100px;
+  height: 50px;
   border: 2px solid lightgrey;
   border-radius: 5%;
 }
 
 #totale{
   width: 100px;
-  height: 100px;
+  height: 50px;
   border: 2px solid lightgrey;
   border-radius: 5%;
 }
