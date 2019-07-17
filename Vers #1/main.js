@@ -1,6 +1,28 @@
 // Creare una griglia formata da 8x8 quadratini tutti bianchi.
 // 15 di questi quadratini (scelti a caso all’inizio) se cliccati diventano rossi, gli altri diventano verdi
 
+
+//Funzione per creare dei numeri random
+function genNumRandom(max, min, repeat){
+  var n = Math.floor(Math.random() * (max - min) + min);
+  var temporanea = [];
+
+  for (var i = 0; i < repeat; i++) {
+    n = Math.floor(Math.random() * (max - min) + min);
+
+    //Controllo che nell'array non ci sia già il numero random 
+    if (temporanea.includes(n)) {
+      i--;
+    }else{
+      temporanea.push(n);
+    }
+
+
+  }
+  return temporanea;
+}
+
+
 //Creo l'evento click per mostrare il quadratino coperto (JQuery)
 var square = $('.square');
 var hiddenHide = $('.hiddenHide')
@@ -25,3 +47,22 @@ square.click(function(){
   });
 
 });
+
+
+console.log($('.square'));
+
+//Ritorna un array di oggetti con tutti i quadrati nell'hatml
+console.log(square);
+
+genNumRandom(0, 63, 15);
+console.log(genNumRandom(0, 63, 15));
+
+
+
+
+for (var i = 0; i < square.length; i++) {
+  square[i];
+  console.log("Oggetto: ", square[i], "indice: ", [i]);
+
+
+}

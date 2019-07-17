@@ -27,7 +27,7 @@
   width: calc(100% / 8.5) ;
   height: 100%;
   border: 2px solid black;
-  background-color: red;
+  background-color: lightgreen;
 }
 
 /* elemento che serve a nascondere il quadrato */
