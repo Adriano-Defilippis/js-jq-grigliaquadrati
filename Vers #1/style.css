@@ -36,4 +36,11 @@
   height: 100%;
   background-color: white;
   background-position: center;
+  /* z-index: 2; */
+}
+
+/* Helper class */
+.bg-red{
+  background-color: red;
+  z-index: 3;
 }

@@ -10,59 +10,77 @@ function genNumRandom(max, min, repeat){
   for (var i = 0; i < repeat; i++) {
     n = Math.floor(Math.random() * (max - min) + min);
 
-    //Controllo che nell'array non ci sia già il numero random 
+    //Controllo che nell'array non ci sia già il numero random
     if (temporanea.includes(n)) {
       i--;
     }else{
       temporanea.push(n);
     }
-
-
   }
-  return temporanea;
+  temporanea;
+
+  return temporanea.sort();
 }
 
 
-//Creo l'evento click per mostrare il quadratino coperto (JQuery)
-var square = $('.square');
-var hiddenHide = $('.hiddenHide')
+
+//Esecuzione del codice
+$(document).ready(function(){
+
+
+  // Memorizzo in una variabile l'array di numeri randomici che ritorna dalla Funzione
+  var randomIndex = genNumRandom(0, 63, 15);
+
+  //Creo l'evento click per mostrare il quadratino coperto (JQuery)
+  var square = $('.square');
+  var hiddenHide = $('.hiddenHide');
 
 
 
-//Evento del click sul quadrato bianco Mostra/Nascondi
-square.click(function(){
+  //Evento del click sul quadrato
+  square.click(function(){
 
-  //Memorizzo l'elemento filgio in una variabile per richiamare la timing function solo sull'elemento dove è attiva la funzione
-  var thisChildren = $(this).children();
+    //Memorizzo l'elemento figlio di square (hiddenHide) in una variabile per richiamare la timing function solo sull'elemento dove è attiva la funzione
+    var squareChildren = $(this).children();
 
-  thisChildren.hide(500, function(){
+    squareChildren.hide(500, function(){
 
-    //Timing function di fine animazione per far riapparire lo sfondo bianco
-    setTimeout(function(){
+      //Timing function di fine animazione per far riapparire lo sfondo bianco
+      setTimeout(function(){
 
-    thisChildren.show(500);
+      squareChildren.show(500);
 
-    },2000);
+      },2000);
+
+    });
 
   });
 
+
+
+  //Ritorna un array di oggetti con tutti i quadrati dell'html
+  console.log(square);
+  //Ritorno dell'array con i numeri randomici
+  console.log("Array degli indici randomici ", randomIndex);
+
+
+  //Attraverso gli oggetti con la classe CSS .square con il selettore di JQuery, square = $('.square')
+  for (var i = 0; i < square.length; i++) {
+
+    //Controllo se il valore dell'indice è tra i miei numeri random
+    if (randomIndex.includes(i)) {
+
+      //Se lo è, aggiunge una classe con background red con metodo JS all'oggetto in questione e non a tutti gli oggetti
+      square[i].classList.add("bg-red");
+
+      console.log("oggetti ai quali aggiungo la classe bg-red ", square[i], " indice: ", i);
+    }
+
+  }
+
 });
 
-
-console.log($('.square'));
-
-//Ritorna un array di oggetti con tutti i quadrati nell'hatml
-console.log(square);
-
-genNumRandom(0, 63, 15);
-console.log(genNumRandom(0, 63, 15));
+//---------------- FINE BLOCCO GENERATORE GRIGLIA ED OUTPUT DI BASE ----------------------//
 
 
-
-
-for (var i = 0; i < square.length; i++) {
-  square[i];
-  console.log("Oggetto: ", square[i], "indice: ", [i]);
-
-
-}
+//---------------- BLOCCO REGOLE, CONTEGGIO PUNTI E VINCITA O PERDITA --------------------//                       
