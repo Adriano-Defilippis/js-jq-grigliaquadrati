@@ -7,15 +7,18 @@ var hiddenHide = $('.hiddenHide')
 
 
 
-//Evento del click sul quadrato bianco
+//Evento del click sul quadrato bianco Mostra/Nascondi
 square.click(function(){
 
-  $(this).children().hide(500, function(){
+  //Memorizzo l'elemento filgio in una variabile per richiamare la timing function solo sull'elemento dove è attiva la funzione
+  var thisChildren = $(this).children();
+
+  thisChildren.hide(500, function(){
 
     //Timing function di fine animazione per far riapparire lo sfondo bianco
     setTimeout(function(){
 
-      hiddenHide.show(500);
+    thisChildren.show(500);
 
     },2000);
 
