@@ -4,8 +4,6 @@
 
 /* Metto un Display flex al contenitore della griglia */
 .grid {
-  display: flex;
-  flex-wrap: wrap;
   width: 80vw;
   height: 80vh;
   margin: 0 auto;

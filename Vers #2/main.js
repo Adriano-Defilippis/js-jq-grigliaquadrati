@@ -22,35 +22,52 @@ function genNumRandom(max, min, repeat){
   return temporanea.sort();
 }
 
-//Funzione per inserire un numero preciso di div nell'html
-function squareGenerator(numOfRow, strIdSelectorJs){
-
-  var container = document.getElementById(strIdSelectorJs);
-  // var value = container.innerHTML;
-  // var temporary = container.innerHTML;
 
 
-  for (var i = 0; i < numOfRow; i++) {
-    // temporary = container.innerHTML;
-    // // temporary = container.innerHTML = ("<div class='row'></div>");
-    // temporary = ("<div class='row'></div>");
-    // console.log("siamo dentro il for ", temporary);
+//Funzine generatrice di stringhe da passare ad altra funzione
+function divGenerator(maxNumSquareOfRow){
 
-    container.innerHTML += "<div class='row'></div>";
+  var str = "";
 
+  for (var i = 0; i < maxNumSquareOfRow; i++) {
+    str += "<div class='square'><div class='hiddenHide'></div></div>"
   }
-  // console.log("Siamo fuori il for" ,temporary);
-  //
+  return str
+}
+
+
+
+
+//Funzione per inserire un numero preciso di div nell'html
+function rowGenerator(numOfRow, strIdContainerSelector, strClassRowSelector, totDivisoNumQuadrati){
+
+  var container = document.getElementById(strIdContainerSelector);
+  //Ciclo per creare le Row con classe .row
+  for (var i = 0; i < numOfRow; i++) {
+
+
+    container.innerHTML += "<div class='row'>" + divGenerator(8) +"</div>";
+  }
   return container
 }
+
+
+
 
 
 
 //Esecuzione del codice
 $(document).ready(function(){
 
+  //Avvio la generazione random delle Row della mia griglia, mentre per le caselle vado a cambiare parametri alla funzione interna
+  // divGenerator()
+  rowGenerator(8,"griglia", "row", 8);
 
-  // Memorizzo in una variabile l'array di numeri randomici che ritorna dalla Funzione
+  //Ritorna un array di oggetti con tutti i quadrati dell'html
+  console.log(square);
+
+
+  // Memorizzo in una variabile l'array di numeri randomici che ritorna dalla Funzione per creare numeri random
   var randomIndex = genNumRandom(0, 63, 15);
 
   //Creo l'evento click per mostrare il quadratino coperto (JQuery)
@@ -65,11 +82,13 @@ $(document).ready(function(){
     //Memorizzo l'elemento figlio di square (hiddenHide) in una variabile per richiamare la timing function solo sull'elemento dove è attiva la funzione
     var squareChildren = $(this).children();
 
+    // Il Quadrato mostra il contenuto
     squareChildren.hide(500, function(){
 
       //Timing function di fine animazione per far riapparire lo sfondo bianco
       setTimeout(function(){
 
+      //Il Quadrato di chiude
       squareChildren.show(500);
 
       },2000);
@@ -80,8 +99,6 @@ $(document).ready(function(){
 
 
 
-  //Ritorna un array di oggetti con tutti i quadrati dell'html
-  console.log(square);
   //Ritorno dell'array con i numeri randomici
   console.log("Array degli indici randomici ", randomIndex);
 
@@ -103,7 +120,8 @@ $(document).ready(function(){
 
 });
 
-squareGenerator(8,"griglia");
+console.log(divGenerator(8));
+
 
 //---------------- FINE BLOCCO GENERATORE GRIGLIA ED OUTPUT DI BASE ----------------------//
 
