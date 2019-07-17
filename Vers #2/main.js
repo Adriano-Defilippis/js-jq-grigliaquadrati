@@ -78,6 +78,7 @@ $(document).ready(function(){
   var greenCounter = 0;
   var redCounter = 0;
   var totCounter = 0;
+  var controllo = true;
 
 
   //Evento del click sul quadrato
@@ -92,6 +93,15 @@ $(document).ready(function(){
 
     //Se La Prprieta cliccata è verde in rgb
     if (cssProprertyClick === "rgb(144, 238, 144)") {
+
+      //Timing function di fine animazione per far riapparire lo sfondo bianco solo se il quadrato selezionato è verde
+      setTimeout(function(){
+
+      //Il Quadrato di chiude
+      squareChildren.show(500);
+
+      },2000);
+
       //allora incrementiamo il contatore dei verdi
       greenCounter++;
 
@@ -105,26 +115,21 @@ $(document).ready(function(){
 
     totCounter++;
 
+
+
+
+
     //Output in pagina dei counter
     document.getElementById('verdi').innerHTML = greenCounter;
     document.getElementById('rossi').innerHTML = redCounter;
     document.getElementById('totale').innerHTML = totCounter;
 
-    // Azione al Click: Il Quadrato mostra il contenuto
-    squareChildren.hide(500, function(){
 
-      //Timing function di fine animazione per far riapparire lo sfondo bianco
-      setTimeout(function(){
 
-      //Il Quadrato di chiude
-      squareChildren.show(500);
-
-      },2000);
-
-    });
+    // Azione: Il Quadrato si mostra nascondendo il div anteriore
+    squareChildren.hide(500);
 
   });
-
 
 
   //Ritorno dell'array con i numeri randomici
@@ -147,6 +152,9 @@ $(document).ready(function(){
   }
 
 });
+
+
+
 
 console.log(divGenerator(8));
 
