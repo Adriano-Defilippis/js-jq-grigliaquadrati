@@ -74,15 +74,43 @@ $(document).ready(function(){
   var square = $('.square');
   var hiddenHide = $('.hiddenHide');
 
+  //Variabile per contare i quadrati verdi cliccati
+  var greenCounter = 0;
+  var redCounter = 0;
+  var totCounter = 0;
 
 
   //Evento del click sul quadrato
   square.click(function(){
-
     //Memorizzo l'elemento figlio di square (hiddenHide) in una variabile per richiamare la timing function solo sull'elemento dove è attiva la funzione
     var squareChildren = $(this).children();
 
-    // Il Quadrato mostra il contenuto
+    //Variabile che memorizza la proprietà css del quadrato dove clicchiamo
+    var cssProprertyClick = $(this).css("background-color");
+
+    console.log($(this).css("background-color"));
+
+    //Se La Prprieta cliccata è verde in rgb
+    if (cssProprertyClick === "rgb(144, 238, 144)") {
+      //allora incrementiamo il contatore dei verdi
+      greenCounter++;
+
+    }
+    //Se La Proprieta cliccata è rossa
+    else if(cssProprertyClick === "rgb(255, 0, 0)"){
+      //allora incrementiamo il contatore dei verdi
+      redCounter++;
+
+    }
+
+    totCounter++;
+
+    //Output in pagina dei counter
+    document.getElementById('verdi').innerHTML = greenCounter;
+    document.getElementById('rossi').innerHTML = redCounter;
+    document.getElementById('totale').innerHTML = totCounter;
+
+    // Azione al Click: Il Quadrato mostra il contenuto
     squareChildren.hide(500, function(){
 
       //Timing function di fine animazione per far riapparire lo sfondo bianco

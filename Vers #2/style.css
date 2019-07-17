@@ -23,6 +23,12 @@
   clear: both;
 }
 
+.rowCounter{
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+
+}
 
 
 .square {
@@ -45,4 +51,27 @@
 .bg-red{
   background-color: red;
   z-index: 3;
+}
+
+
+/* Classi per i contatori */
+#rossi{
+  width: 100px;
+  height: 100px;
+  border: 2px solid lightgrey;
+  border-radius: 5%;
+}
+
+#verdi{
+  width: 100px;
+  height: 100px;
+  border: 2px solid lightgrey;
+  border-radius: 5%;
+}
+
+#totale{
+  width: 100px;
+  height: 100px;
+  border: 2px solid lightgrey;
+  border-radius: 5%;
 }
