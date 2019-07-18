@@ -70,15 +70,40 @@ $(document).ready(function(){
   // Memorizzo in una variabile l'array di numeri randomici che ritorna dalla Funzione per creare numeri random
   var randomIndex = genNumRandom(0, 63, 15);
 
+
+  //Ritorno dell'array con i numeri randomici
+  console.log("Array degli indici randomici ", randomIndex);
+
+
   //Creo l'evento click per mostrare il quadratino coperto (JQuery)
   var square = $('.square');
   var hiddenHide = $('.hiddenHide');
 
-  //Variabile per contare i quadrati verdi cliccati
+  //Variabile per contare i quadrati cliccati
   var greenCounter = 0;
   var redCounter = 0;
   var totCounter = 0;
   var controllo = true;
+
+
+  //Attraverso gli oggetti con la classe CSS .square con il selettore di JQuery, square = $('.square')
+  for (var i = 0; i < square.length; i++) {
+
+    //Controllo se il valore dell'indice è tra i miei numeri random
+    if (randomIndex.includes(i)) {
+
+      //Se lo è, aggiunge una classe con background red con metodo JS all'oggetto in questione e non a tutti gli oggetti
+      square[i].classList.add("bg-red");
+
+
+      console.log("oggetti ai quali aggiungo la classe bg-red ", square[i], " indice: ", i);
+    }
+
+  }
+
+});
+
+
 
 
   //Evento del click sul quadrato
@@ -115,43 +140,16 @@ $(document).ready(function(){
 
     totCounter++;
 
-
-
-
-
     //Output in pagina dei counter
     document.getElementById('verdi').innerHTML = greenCounter;
     document.getElementById('rossi').innerHTML = redCounter;
     document.getElementById('totale').innerHTML = totCounter;
 
 
-
     // Azione: Il Quadrato si mostra nascondendo il div anteriore
     squareChildren.hide(500);
 
   });
-
-
-  //Ritorno dell'array con i numeri randomici
-  console.log("Array degli indici randomici ", randomIndex);
-
-
-  //Attraverso gli oggetti con la classe CSS .square con il selettore di JQuery, square = $('.square')
-  for (var i = 0; i < square.length; i++) {
-
-    //Controllo se il valore dell'indice è tra i miei numeri random
-    if (randomIndex.includes(i)) {
-
-      //Se lo è, aggiunge una classe con background red con metodo JS all'oggetto in questione e non a tutti gli oggetti
-      square[i].classList.add("bg-red");
-
-
-      console.log("oggetti ai quali aggiungo la classe bg-red ", square[i], " indice: ", i);
-    }
-
-  }
-
-});
 
 
 
