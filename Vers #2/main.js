@@ -23,7 +23,6 @@ function genNumRandom(max, min, repeat){
 }
 
 
-
 //Funzine generatrice di stringhe da passare ad altra funzione
 function divGenerator(maxNumSquareOfRow){
 
@@ -53,37 +52,22 @@ function rowGenerator(numOfRow, strIdContainerSelector, strClassRowSelector, tot
 
 
 
-
-
-
 //Esecuzione del codice
 $(document).ready(function(){
 
-  //Avvio la generazione random delle Row della mia griglia, mentre per le caselle vado a cambiare parametri alla funzione interna
-  // divGenerator()
-  rowGenerator(8,"griglia", "row", 8);
 
-  //Ritorna un array di oggetti con tutti i quadrati dell'html
-  console.log(square);
-
-
-  // Memorizzo in una variabile l'array di numeri randomici che ritorna dalla Funzione per creare numeri random
+  // Memorizzo in una variabile l'array di numeri randomici che ritorna dalla Funzione
   var randomIndex = genNumRandom(0, 63, 15);
 
-
-  //Ritorno dell'array con i numeri randomici
-  console.log("Array degli indici randomici ", randomIndex);
+  //Avvio la generazione random delle Row della mia griglia, mentre però il numero delle caselle vado a cambiare parametri alla funzione interna
+  // divGenerator()
+  rowGenerator(8,"griglia", "row", 8);
 
 
   //Creo l'evento click per mostrare il quadratino coperto (JQuery)
   var square = $('.square');
   var hiddenHide = $('.hiddenHide');
 
-  //Variabile per contare i quadrati cliccati
-  var greenCounter = 0;
-  var redCounter = 0;
-  var totCounter = 0;
-  var controllo = true;
 
 
   //Attraverso gli oggetti con la classe CSS .square con il selettore di JQuery, square = $('.square')
@@ -101,13 +85,16 @@ $(document).ready(function(){
 
   }
 
-});
-
-
+  //Variabile per contare i quadrati cliccati
+  var greenCounter = 0;
+  var redCounter = 0;
+  var totCounter = 0;
+  var controllo = true;
 
 
   //Evento del click sul quadrato
   square.click(function(){
+
     //Memorizzo l'elemento figlio di square (hiddenHide) in una variabile per richiamare la timing function solo sull'elemento dove è attiva la funzione
     var squareChildren = $(this).children();
 
@@ -116,7 +103,10 @@ $(document).ready(function(){
 
     console.log($(this).css("background-color"));
 
-    //Se La Prprieta cliccata è verde in rgb
+
+
+    squareChildren.hide(500);
+
     if (cssProprertyClick === "rgb(144, 238, 144)") {
 
       //Timing function di fine animazione per far riapparire lo sfondo bianco solo se il quadrato selezionato è verde
@@ -130,8 +120,8 @@ $(document).ready(function(){
       //allora incrementiamo il contatore dei verdi
       greenCounter++;
 
+
     }
-    //Se La Proprieta cliccata è rossa
     else if(cssProprertyClick === "rgb(255, 0, 0)"){
       //allora incrementiamo il contatore dei verdi
       redCounter++;
@@ -140,22 +130,29 @@ $(document).ready(function(){
 
     totCounter++;
 
+
+
+
+
     //Output in pagina dei counter
     document.getElementById('verdi').innerHTML = greenCounter;
     document.getElementById('rossi').innerHTML = redCounter;
     document.getElementById('totale').innerHTML = totCounter;
 
 
-    // Azione: Il Quadrato si mostra nascondendo il div anteriore
-    squareChildren.hide(500);
 
   });
 
 
 
+  //Ritorna un array di oggetti con tutti i quadrati dell'html
+  console.log(square);
+  //Ritorno dell'array con i numeri randomici
+  console.log("Array degli indici randomici ", randomIndex);
 
-console.log(divGenerator(8));
 
+
+});
 
 //---------------- FINE BLOCCO GENERATORE GRIGLIA ED OUTPUT DI BASE ----------------------//
 
